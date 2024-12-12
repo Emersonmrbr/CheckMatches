@@ -62,7 +62,7 @@ namespace ConferirResultado
             List<Bets> bets = LoadBets("Bets/Bets.json");
 
             // Define the winning numbers
-            List<int> gameResult = [44, 5, 6, 1, 8, 39];
+            List<int> gameResult = [44, 5, 6, 1, 8, 395];
 
             // Initialize results
             List<Bets> bettingResult = [];

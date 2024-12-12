@@ -8,4 +8,5 @@
 /bin
 /node_modules
 /bin/Debug/net9.0
-/Results
+Results
+Results/MatchResult.json
