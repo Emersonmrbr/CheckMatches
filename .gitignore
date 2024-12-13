@@ -4,9 +4,9 @@
 
 
 /.vs
-/obj
 /bin
-/node_modules
 /bin/Debug/net9.0
+/node_modules
+/obj
+Bets
 Results
-Results/MatchResult.json
