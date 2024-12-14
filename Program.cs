@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System;
 
-namespace ConferirResultado
+namespace CheckMatches
 {
     public class Programa
     {
@@ -59,8 +59,8 @@ namespace ConferirResultado
         /// </summary>
         public static void Main(string[] args)
         {
-            string startFolder = "../../../Bets";
-            Console.Clear();
+            string startFolder = "Bets";
+            // Console.Clear();
             DirectoryInfo dir = new(startFolder);
             var fileList = dir.GetFiles("*.*", SearchOption.AllDirectories);
             var fileQuery = from file in fileList
@@ -74,12 +74,12 @@ namespace ConferirResultado
                 List<Bets> bets = LoadBets(fi.FullName);
 
                 // Define the winning numbers
-                List<int> gameResult = [1, 14, 25, 32, 39, 53];
+                List<int> gameResult = [3, 12, 19, 26, 33, 47];
 
                 // Initialize results
                 List<Bets> bettingResult = [];
                 int match = 0;
-                string outFileName = "../../../Results/MatchResult" + fi.Name;
+                string outFileName = "Results/MatchResult" + fi.Name;
 
 
                 // Process each bet
@@ -97,11 +97,11 @@ namespace ConferirResultado
                             Numbers = matchNumbers,
                         });
 
-                        // Console.WriteLine($"Result in row {bet.Row} matches these numbers: {string.Join(", ", matchNumbers)}");
+                        Console.WriteLine($"Result in row {bet.Row} matches these numbers: {string.Join(", ", matchNumbers)}");
                     }
                     else
                     {
-                        // Console.WriteLine($"Result in row {bet.Row} doesn't match any number.");
+                        Console.WriteLine($"Result in row {bet.Row} doesn't match any number.");
                     }
 
                     // Increment the match counter for perfect matches
@@ -111,10 +111,15 @@ namespace ConferirResultado
                     }
                 }
 
-                Console.WriteLine($"\nTotal of winning bets: {match} in {fi.Name}");
+                Console.WriteLine($"\nTotal of winning bets: {match} in {fi.Name}\n");
 
                 // Save results as JSON
-                SaveDeleteResultsAsJson(new BetReport { TotalResults = bettingResult.Count, TotalMatches = match, BettingResult = bettingResult }, outFileName);
+                SaveDeleteResultsAsJson(new BetReport
+                {
+                    TotalResults = bettingResult.Count,
+                    TotalMatches = match,
+                    BettingResult = bettingResult
+                }, outFileName);
             }
         }
 

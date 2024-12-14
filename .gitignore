@@ -4,9 +4,11 @@
 
 
 /.vs
+/.vscode
 /bin
 /bin/Debug/net9.0
 /node_modules
 /obj
 Bets
 Results
+Emerson
